@@ -20,3 +20,6 @@ public class App {
         log.info("ext={} format={}", FilenameUtils.getExtension(name), factory.getFormatName());
     }
 }
+
+// 컴파일 오류 주입 (AVS-04)
+class Broken { void x() { int y = "not-an-int" } }
