@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.depgov.nope:missing-artifact:9.9.9' // Central에 없는 좌표 (AVS-04)
     implementation 'org.apache.commons:commons-lang3:3.17.0'   // 사용 → REFERENCED
     implementation 'com.google.guava:guava:33.4.0-jre'         // 선언만, 미참조 → UNUSED_CANDIDATE
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2' // 자식(jackson-core)만 참조 → USED_VIA_CHILD
