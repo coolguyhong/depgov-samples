@@ -1,0 +1,41 @@
+{
+  "declared": [
+    {"module": "stub-main", "configuration": "implementation", "group": "stub.lang", "artifact": "libused", "version": "1.0.0"},
+    {"module": "stub-main", "configuration": "implementation", "group": "stub.lang", "artifact": "libunused", "version": "1.0.0"},
+    {"module": "stub-main", "configuration": "implementation", "group": "stub.lang", "artifact": "libspi", "version": "1.2.0"},
+    {"module": "stub-main", "configuration": "implementation", "group": "stub.lang", "artifact": "libauto", "version": "2.0.0"},
+    {"module": "stub-main", "configuration": "implementation", "group": "stub.lang", "artifact": "bundle", "version": "1.0.0"},
+    {"module": "stub-main", "configuration": "implementation", "group": "stub.lang", "artifact": "libold", "version": "1.0.0"},
+    {"module": "stub-main", "configuration": "compileOnly", "group": "stub.lang", "artifact": "libprovided", "version": "0.9.0"}
+  ],
+  "included": [{"module": "stub-main", "roots": [
+    {"group": "stub.lang", "artifact": "libused", "version": "1.0.0", "children": [
+      {"group": "stub.lang", "artifact": "libtrans", "version": "0.5.0", "children": []}]},
+    {"group": "stub.lang", "artifact": "libunused", "version": "1.0.0", "children": []},
+    {"group": "stub.lang", "artifact": "libspi", "version": "1.2.0", "children": []},
+    {"group": "stub.lang", "artifact": "libauto", "version": "2.0.0", "children": []},
+    {"group": "stub.lang", "artifact": "bundle", "version": "1.0.0", "children": [
+      {"group": "stub.lang", "artifact": "libchild", "version": "1.0.0", "children": []}]},
+    {"group": "stub.lang", "artifact": "libold", "version": "1.1.0", "children": []}
+  ]}],
+  "referenced": [
+    {"ownerCoordinate": "stub.lang:libused", "fqcn": "stub.lang.used.Api", "member": "call", "refType": "METHOD",
+     "location": {"module": "stub-main", "file": "main.stub", "line": 10}},
+    {"ownerCoordinate": "stub.lang:libchild", "fqcn": "stub.lang.child.Helper", "member": null, "refType": "TYPE",
+     "location": {"module": "stub-main", "file": "main.stub", "line": 20}},
+    {"ownerCoordinate": "stub.lang:libold", "fqcn": "stub.lang.old.Reader", "member": "read", "refType": "METHOD",
+     "location": {"module": "stub-main", "file": "main.stub", "line": 30}}
+  ],
+  "traits": {
+    "stub.lang:libused:1.0.0":   {"hasClasses": true,  "spi": false, "autoConfig": false},
+    "stub.lang:libtrans:0.5.0":  {"hasClasses": true,  "spi": false, "autoConfig": false},
+    "stub.lang:libunused:1.0.0": {"hasClasses": true,  "spi": false, "autoConfig": false},
+    "stub.lang:libspi:1.2.0":    {"hasClasses": true,  "spi": true,  "autoConfig": false},
+    "stub.lang:libauto:2.0.0":   {"hasClasses": true,  "spi": false, "autoConfig": true},
+    "stub.lang:bundle:1.0.0":    {"hasClasses": false, "spi": false, "autoConfig": false},
+    "stub.lang:libchild:1.0.0":  {"hasClasses": true,  "spi": false, "autoConfig": false},
+    "stub.lang:libold:1.1.0":    {"hasClasses": true,  "spi": false, "autoConfig": false}
+  },
+  "scannedClasses": {"stub-main": 3},
+  "completeness": "FULL"
+}
