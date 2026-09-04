@@ -1,0 +1,16 @@
+subprojects {
+    apply plugin: 'java'
+
+    group = 'com.depgov.sample'
+    version = '0.1.0'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)   // toolchain 21 명시 (POC_SCOPE 3절)
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}

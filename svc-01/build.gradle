@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.depgov.sample'
+version = '0.1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.17.0'   // 사용 → REFERENCED
+    implementation 'com.google.guava:guava:33.4.0-jre'         // 선언만, 미참조 → UNUSED_CANDIDATE
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2' // 자식(jackson-core)만 참조 → USED_VIA_CHILD
+    implementation 'commons-io:commons-io:2.18.0'              // 사용 + BOM에 없음 → REFERENCED + outOfBom
+    implementation 'org.slf4j:slf4j-api:2.0.13'                // 사용 + BOM(2.0.16)과 불일치 → REFERENCED + versionMismatch
+    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0'    // runtimeClasspath에 없음 → DECLARED_ONLY
+}

@@ -1,0 +1,6 @@
+dependencies {
+    implementation 'org.apache.lucene:lucene-core:9.11.1'   // 선언만, SPI jar → UNUSED_CANDIDATE MEDIUM
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'  // 선언만 → UNUSED_CANDIDATE HIGH (진짜 미사용)
+    implementation 'commons-codec:commons-codec:1.17.1'     // 리플렉션 전용 → UNUSED_CANDIDATE HIGH 오탐
+    implementation 'org.slf4j:slf4j-api:2.0.16'             // 사용 → REFERENCED
+}

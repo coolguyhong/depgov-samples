@@ -1,0 +1,2 @@
+rootProject.name = 'svc-03'
+include 'app', 'lib'

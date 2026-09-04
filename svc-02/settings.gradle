@@ -1,0 +1,2 @@
+rootProject.name = 'svc-02'
+include 'app', 'core', 'common'

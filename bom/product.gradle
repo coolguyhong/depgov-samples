@@ -1,0 +1,7 @@
+// 제품 공통(사내 공통 라이브러리 자리, PoC에서는 공개 라이브러리로 대체).
+dependencies {
+    constraints {
+        api 'commons-codec:commons-codec:1.17.1'
+        api 'org.apache.commons:commons-collections4:4.4' // 어느 표본도 안 씀 (BOM 기준 미사용 후보 3)
+    }
+}

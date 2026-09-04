@@ -1,0 +1,10 @@
+// 플랫폼 계열 표준 버전.
+dependencies {
+    constraints {
+        api 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+        api 'org.springframework.boot:spring-boot-starter-logging:3.5.16'
+        api 'org.springframework.boot:spring-boot-autoconfigure:3.5.16'
+        api 'org.postgresql:postgresql:42.7.4'
+        api 'org.yaml:snakeyaml:2.3'                      // 어느 표본도 안 씀 (BOM 기준 미사용 후보 2)
+    }
+}

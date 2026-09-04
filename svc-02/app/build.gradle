@@ -1,0 +1,6 @@
+dependencies {
+    implementation project(':core')
+    implementation 'org.springframework.boot:spring-boot-starter-logging:3.5.16' // 클래스 없는 묶음, 안의 logback만 참조 → USED_VIA_CHILD
+    implementation 'org.apache.commons:commons-lang3:3.17.0'                     // 사용 → REFERENCED
+    implementation 'org.postgresql:postgresql:42.7.4'                            // 선언만 → UNUSED_CANDIDATE LOW(JDBC 목록)
+}
