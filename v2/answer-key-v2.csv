@@ -13,7 +13,7 @@ C11,order-service,app,org.apache.logging.log4j:log4j-api,,2.25.4,TRANSITIVE_VIA_
 C12,settlement-batch,settlement-batch,com.fasterxml.jackson.core:jackson-databind,,2.18.2,TRANSITIVE,com.depgov.common:data-convert,USED,STATIC_CALL,TBD,TBD,true,2.18.2,REFERENCED,,false,false,,OSV,,N,선언 없는 전이 직접 참조 depth 2
 C13,settlement-batch,settlement-batch,org.apache.commons:commons-lang3,3.16.0,3.17.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,3.17.0,REFERENCED,,false,true,,OSV,,N,선언 3.16.0 vs 선택 3.17.0
 C14,settlement-batch,settlement-batch,org.postgresql:postgresql,42.7.11,42.7.11,DIRECT,,UNUSED,NONE,,,true,42.7.4,UNUSED_CANDIDATE,LOW,false,true,,OSV,,N,runtime-loading 목록 → LOW
-C15,settlement-batch,settlement-batch,com.zaxxer:HikariCP,7.0.2,7.0.2,DIRECT,,UNUSED,NONE,,,false,,UNUSED_CANDIDATE,HIGH,true,false,,OSV,,N,
+C15,settlement-batch,settlement-batch,org.antlr:antlr4-runtime,4.13.2,4.13.2,DIRECT,,UNUSED,NONE,,,false,,UNUSED_CANDIDATE,HIGH,true,false,,OSV,,N,2026-10-26 HikariCP→antlr4-runtime 교체(HikariCP 전이 slf4j 2.0.17 오프라인 미확보)
 C16,settlement-batch,settlement-batch,commons-io:commons-io,2.18.0,2.18.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,false,,REFERENCED,,true,false,,OSV,,N,
 C17,partner-gateway,partner-gateway,org.apache.httpcomponents.client5:httpclient5,,5.6.1,TRANSITIVE,com.depgov.common:ext-client,UNVERIFIABLE,NONE_IN_SERVICE,,,true,5.6.1,TRANSITIVE_ONLY,,false,false,,OSV,,N,ext-client 내부에서만 사용
 C18,partner-gateway,partner-gateway,org.apache.httpcomponents.core5:httpcore5,,5.4,TRANSITIVE,com.depgov.common:ext-client,UNVERIFIABLE,NONE_IN_SERVICE,,,true,5.3.1,TRANSITIVE_ONLY,,false,true,,OSV,,N,depth 2
