@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.depgov.sample.v2'
+version = '1.0.0'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+application {
+    mainClass = 'com.depgov.sample.legacy.LegacyReport'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://raw.githubusercontent.com/coolguyhong/depgov-samples/main/v2/maven-repo' }
+}
+
+dependencies {
+    implementation 'com.depgov.common:common-util:1.0.0' // SMP-C25: static calls
+    implementation 'org.slf4j:slf4j-api:1.7.36' // SMP-C26: BOM version mismatch
+    implementation 'org.apache.logging.log4j:log4j-api:2.25.4' // SMP-C27: outside BOM
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2' // SMP-C28: declaration only
+    implementation 'org.apache.commons:commons-lang3:3.17.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.4'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+}
