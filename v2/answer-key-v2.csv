@@ -9,7 +9,7 @@ C07,order-service,app,com.depgov.common:common-util,1.0.0,1.0.0,DIRECT,,USED,STA
 C08,order-service,app,com.depgov.common:data-convert,1.0.0,1.0.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,1.0.0,REFERENCED,,false,false,,OSV,EXCLUDED/INTERNAL,N,사내
 C09,order-service,app,com.depgov.common:ext-client,1.0.0,1.0.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,1.0.0,REFERENCED,,false,false,,OSV,EXCLUDED/INTERNAL,N,사내
 C10,order-service,domain,org.apache.commons:commons-lang3,3.17.0,3.17.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,3.17.0,REFERENCED,,false,false,,OSV,,N,
-C11,order-service,app,org.slf4j:slf4j-api,,2.0.13,TRANSITIVE_VIA_PROJECT,project(:domain),UNVERIFIABLE,NONE_IN_APP,,,true,2.0.16,TRANSITIVE_ONLY,,false,true,LIM-PROJECT-PATH,OSV,,N,포함 경로 PROJECT_PATH_UNSUPPORTED
+C11,order-service,app,org.apache.logging.log4j:log4j-api,,2.25.4,TRANSITIVE_VIA_PROJECT,project(:domain),UNVERIFIABLE,NONE_IN_APP,,,false,,TRANSITIVE_ONLY,,true,false,LIM-PROJECT-PATH,OSV,,N,포함 경로 PROJECT_PATH_UNSUPPORTED (2026-10-26 slf4j→log4j-api 교체: slf4j 는 ext-client 외부 경로로도 유입)
 C12,settlement-batch,settlement-batch,com.fasterxml.jackson.core:jackson-databind,,2.18.2,TRANSITIVE,com.depgov.common:data-convert,USED,STATIC_CALL,TBD,TBD,true,2.18.2,REFERENCED,,false,false,,OSV,,N,선언 없는 전이 직접 참조 depth 2
 C13,settlement-batch,settlement-batch,org.apache.commons:commons-lang3,3.16.0,3.17.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,3.17.0,REFERENCED,,false,true,,OSV,,N,선언 3.16.0 vs 선택 3.17.0
 C14,settlement-batch,settlement-batch,org.postgresql:postgresql,42.7.11,42.7.11,DIRECT,,UNUSED,NONE,,,true,42.7.4,UNUSED_CANDIDATE,LOW,false,true,,OSV,,N,runtime-loading 목록 → LOW
