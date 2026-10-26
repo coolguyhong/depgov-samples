@@ -1,0 +1,31 @@
+{
+  "orders": [
+    {
+      "orderId": "ORD-001",
+      "customerId": "A1",
+      "lines": [
+        { "productId": "PEN", "qty": 2, "unitPrice": 1250 },
+        { "productId": "NOTE", "qty": 1, "unitPrice": 499 }
+      ],
+      "attachments": ["invoice.pdf", "items.csv"]
+    },
+    {
+      "orderId": "ORD-002",
+      "customerId": "CUST1234",
+      "lines": [
+        { "productId": "CLIP", "qty": 3, "unitPrice": 335 }
+      ],
+      "attachments": ["receipt.txt"]
+    },
+    {
+      "orderId": "ORD-003",
+      "customerId": "CUSTOMER-12345",
+      "lines": [
+        { "productId": "DESK", "qty": 1, "unitPrice": 12000 },
+        { "productId": "PAD", "qty": 2, "unitPrice": 250 },
+        { "productId": "LABEL", "qty": 3, "unitPrice": 99 }
+      ],
+      "attachments": ["photo.png", "README", "archive.tar.gz"]
+    }
+  ]
+}

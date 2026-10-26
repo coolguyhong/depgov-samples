@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+application {
+    mainClass = 'com.depgov.sample.order.app.OrderApp'
+}
+
+dependencies {
+    implementation project(':domain')
+    implementation 'org.apache.commons:commons-lang3:3.17.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
+    // SMP-C04: intentionally unused, declaration only.
+    implementation 'org.apache.commons:commons-compress:1.27.1'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    implementation 'commons-io:commons-io:2.18.0'
+    implementation 'com.depgov.common:common-util:1.0.0'
+    implementation 'com.depgov.common:data-convert:1.0.0'
+    implementation 'com.depgov.common:ext-client:1.0.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.4'
+}
+
+tasks.named('run', JavaExec) {
+    workingDir rootProject.projectDir
+}
+
+tasks.named('test', Test) {
+    systemProperty 'sample.root', rootProject.projectDir.absolutePath
+}

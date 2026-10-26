@@ -1,0 +1,35 @@
+{
+  "orderCount": 3,
+  "subtotal": 16801,
+  "tax": 1681,
+  "total": 18482,
+  "orders": [
+    {
+      "orderId": "ORD-001",
+      "customerId": "A1      ",
+      "subtotal": 2999,
+      "tax": 300,
+      "total": 3299,
+      "attachmentExtensions": ["pdf", "csv"],
+      "partnerResponse": null
+    },
+    {
+      "orderId": "ORD-002",
+      "customerId": "CUST1234",
+      "subtotal": 1005,
+      "tax": 101,
+      "total": 1106,
+      "attachmentExtensions": ["txt"],
+      "partnerResponse": null
+    },
+    {
+      "orderId": "ORD-003",
+      "customerId": "CUSTOMER-12345",
+      "subtotal": 12797,
+      "tax": 1280,
+      "total": 14077,
+      "attachmentExtensions": ["png", "", "gz"],
+      "partnerResponse": null
+    }
+  ]
+}
