@@ -1,0 +1,6 @@
+MONTHLY SALES REPORT (KRW)
+MONTH   RECORDS        SALES          TAX        TOTAL
+2026-01       3         1215          122         1337
+2026-02       2         3000          300         3300
+2026-03       1           15            2           17
+TOTAL         6         4230          424         4654
