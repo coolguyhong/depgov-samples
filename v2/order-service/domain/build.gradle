@@ -1,0 +1,6 @@
+dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.17.0'
+    implementation 'org.apache.logging.log4j:log4j-api:2.25.4' // SMP-C11: project(:domain) 경유 전용 좌표 (Claude 보완)
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.4'
+}
