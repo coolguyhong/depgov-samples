@@ -1,0 +1,35 @@
+case_id,service,module,group_artifact,declared_version,expected_selected_version,inclusion,include_path_root,actual_use,use_kind,evidence_file,evidence_lines,bom_managed,bom_version,expected_verdict,expected_grade,expected_out_of_bom,expected_version_mismatch,known_limit,vuln_source,vuln_ids_observed_at,holdout,note
+C01,order-service,app,org.apache.commons:commons-lang3,3.17.0,3.17.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,3.17.0,REFERENCED,,false,false,,OSV,,N,
+C02,order-service,app,com.fasterxml.jackson.core:jackson-databind,2.18.2,2.18.2,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,2.18.2,REFERENCED,,false,false,,OSV,,N,취약 버전(v2.1에서 2.21.4로 교체)
+C03,order-service,app,com.fasterxml.jackson.core:jackson-core,,2.18.2,TRANSITIVE,com.fasterxml.jackson.core:jackson-databind,USED,STATIC_CALL,TBD,TBD,true,2.18.2,REFERENCED,,false,false,,OSV,,N,선언 없는 전이 직접 참조
+C04,order-service,app,org.apache.commons:commons-compress,1.27.1,1.27.1,DIRECT,,UNUSED,NONE,,,true,1.27.1,UNUSED_CANDIDATE,HIGH,false,false,,OSV,,N,진짜 미사용(v2.1에서 제거)
+C05,order-service,app,com.google.code.findbugs:jsr305,3.0.2,3.0.2,DIRECT,,COMPILE_ONLY_USE,ANNOTATION,TBD,TBD,true,3.0.2,UNUSED_CANDIDATE,HIGH,false,false,LIM-ANNOTATION,OSV,,N,annotation 전용 — 실행 불필요이므로 후보 제시는 타당
+C06,order-service,app,commons-io:commons-io,2.18.0,2.18.0,DIRECT,,USED,METHOD_REFERENCE,TBD,TBD,false,,UNUSED_CANDIDATE,HIGH,true,false,LIM-INVOKEDYNAMIC,OSV,,N,오탐: method reference 는 invokedynamic 이라 미검출
+C07,order-service,app,com.depgov.common:common-util,1.0.0,1.0.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,1.0.0,REFERENCED,,false,false,,OSV,EXCLUDED/INTERNAL,N,사내
+C08,order-service,app,com.depgov.common:data-convert,1.0.0,1.0.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,1.0.0,REFERENCED,,false,false,,OSV,EXCLUDED/INTERNAL,N,사내
+C09,order-service,app,com.depgov.common:ext-client,1.0.0,1.0.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,1.0.0,REFERENCED,,false,false,,OSV,EXCLUDED/INTERNAL,N,사내
+C10,order-service,domain,org.apache.commons:commons-lang3,3.17.0,3.17.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,3.17.0,REFERENCED,,false,false,,OSV,,N,
+C11,order-service,app,org.slf4j:slf4j-api,,2.0.13,TRANSITIVE_VIA_PROJECT,project(:domain),UNVERIFIABLE,NONE_IN_APP,,,true,2.0.16,TRANSITIVE_ONLY,,false,true,LIM-PROJECT-PATH,OSV,,N,포함 경로 PROJECT_PATH_UNSUPPORTED
+C12,settlement-batch,settlement-batch,com.fasterxml.jackson.core:jackson-databind,,2.18.2,TRANSITIVE,com.depgov.common:data-convert,USED,STATIC_CALL,TBD,TBD,true,2.18.2,REFERENCED,,false,false,,OSV,,N,선언 없는 전이 직접 참조 depth 2
+C13,settlement-batch,settlement-batch,org.apache.commons:commons-lang3,3.16.0,3.17.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,3.17.0,REFERENCED,,false,true,,OSV,,N,선언 3.16.0 vs 선택 3.17.0
+C14,settlement-batch,settlement-batch,org.postgresql:postgresql,42.7.11,42.7.11,DIRECT,,UNUSED,NONE,,,true,42.7.4,UNUSED_CANDIDATE,LOW,false,true,,OSV,,N,runtime-loading 목록 → LOW
+C15,settlement-batch,settlement-batch,com.zaxxer:HikariCP,7.0.2,7.0.2,DIRECT,,UNUSED,NONE,,,false,,UNUSED_CANDIDATE,HIGH,true,false,,OSV,,N,
+C16,settlement-batch,settlement-batch,commons-io:commons-io,2.18.0,2.18.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,false,,REFERENCED,,true,false,,OSV,,N,
+C17,partner-gateway,partner-gateway,org.apache.httpcomponents.client5:httpclient5,,5.6.1,TRANSITIVE,com.depgov.common:ext-client,UNVERIFIABLE,NONE_IN_SERVICE,,,true,5.6.1,TRANSITIVE_ONLY,,false,false,,OSV,,N,ext-client 내부에서만 사용
+C18,partner-gateway,partner-gateway,org.apache.httpcomponents.core5:httpcore5,,5.4,TRANSITIVE,com.depgov.common:ext-client,UNVERIFIABLE,NONE_IN_SERVICE,,,true,5.3.1,TRANSITIVE_ONLY,,false,true,,OSV,,N,depth 2
+C19,partner-gateway,partner-gateway,com.depgov.common:ext-client,1.0.0,1.0.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,1.0.0,REFERENCED,,false,false,,OSV,EXCLUDED/INTERNAL,N,v2.2에서 1.1.0
+C20,partner-gateway,partner-gateway,ch.qos.logback:logback-classic,1.5.34,1.5.34,DIRECT,,RUNTIME_BINDING,NONE,,,false,,UNUSED_CANDIDATE,LOW,true,false,,OSV,,N,runtimeOnly 선언
+C21,plugin-host,host,com.depgov.plugins:report-plugin,1.0.0,1.0.0,DIRECT,,USED,SPI_SERVICELOADER,TBD,TBD,true,1.0.0,UNUSED_CANDIDATE,MEDIUM,false,false,LIM-SPI,OSV,EXCLUDED/INTERNAL,Y,hold-out. 오탐: ServiceLoader 전용
+C22,plugin-host,host,commons-codec:commons-codec,1.17.1,1.17.1,DIRECT,,USED,REFLECTION,TBD,TBD,true,1.17.1,UNUSED_CANDIDATE,HIGH,false,false,LIM-REFLECTION,OSV,,N,오탐: Class.forName 전용
+C23,plugin-host,host,org.yaml:snakeyaml,2.6,2.6,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,2.3,REFERENCED,,false,true,,OSV,,N,
+C24,plugin-host,host,com.depgov.plugins:plugin-api,1.0.0,1.0.0,DIRECT,,USED,TYPE_REFERENCE,TBD,TBD,true,1.0.0,REFERENCED,,false,false,,OSV,EXCLUDED/INTERNAL,N,
+C25,legacy-report,legacy-report,com.depgov.common:common-util,1.0.0,1.0.0,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,1.0.0,REFERENCED,,false,false,,OSV,EXCLUDED/INTERNAL,N,JDK 8 빌드
+C26,legacy-report,legacy-report,org.slf4j:slf4j-api,1.7.36,1.7.36,DIRECT,,USED,STATIC_CALL,TBD,TBD,true,2.0.16,REFERENCED,,false,true,,OSV,,Y,hold-out
+C27,legacy-report,legacy-report,org.apache.logging.log4j:log4j-api,2.25.4,2.25.4,DIRECT,,USED,STATIC_CALL,TBD,TBD,false,,REFERENCED,,true,false,,OSV,,N,
+C28,legacy-report,legacy-report,com.fasterxml.jackson.core:jackson-databind,2.18.2,2.18.2,DIRECT,,UNUSED,NONE,,,true,2.18.2,UNUSED_CANDIDATE,MEDIUM,false,false,,OSV,,N,spi 특성(META-INF/services) → MEDIUM
+C29,fail-module,*,*,,,,,,,,,,,REDUCED/DEGRADED,,,,INTENTIONAL_FAILURE,,,N,fail_stage build; broken module compile 오류
+C30,fail-jdk,fail-jdk,*,,,,,,,,,,,FAILED,,,,INTENTIONAL_FAILURE,,,N,buildJdkMajor 11 로 Java 17 문법
+C31,*,*,com.depgov.common:common-util,,,,,,,,,,,,,,,,,,N,라이브러리 역조회: order(1.0.0) legacy(1.0.0) settle(1.0.0→v2.2 1.1.0)
+C32,*,*,com.depgov.common.util.StringKit#pad,,,,,,,,,,,,,,,,,,N,변경 영향: v2.2 이후 order·legacy(1.0.0 사용) 영향; settle 제외
+C33,*,*,com.fasterxml.jackson.core:jackson-databind:2.18.2,,,,,,,,,,,,,,,,OSV,,N,CVE→서비스: order(v2.0 직접) settle(전이) legacy(선언만) 포함 경로
+C34,*,*,*,,,,,,,,,,,,,,,,,,N,결과 0건(FETCHED 0) vs 조회 실패(FAILED/NOT_SUBMITTED, L lane) vs 미조회(NO_SNAPSHOT) 구분
