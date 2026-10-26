@@ -1,0 +1,10 @@
+subprojects {
+    apply plugin: 'java'
+    group = 'com.depgov.sample.v2'
+    version = '1.0.0'
+
+    repositories {
+        mavenCentral()
+        maven { url 'https://raw.githubusercontent.com/coolguyhong/depgov-samples/main/v2/maven-repo' }
+    }
+}

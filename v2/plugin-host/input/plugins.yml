@@ -1,0 +1,6 @@
+active: [report]
+handler: org.apache.commons.codec.digest.DigestUtils
+handlerMethod: sha256Hex
+input:
+  customer: C-1001
+  amount: "12500"
