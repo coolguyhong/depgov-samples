@@ -1,0 +1,2 @@
+rootProject.name = 'depgov-common-libs'
+include 'common-util', 'data-convert', 'ext-client', 'plugin-api', 'report-plugin'

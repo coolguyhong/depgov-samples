@@ -1,0 +1,85 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.depgov.common",
+    "module": "data-convert",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.14.5"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-databind",
+          "version": {
+            "requires": "2.18.2"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "data-convert-1.0.0.jar",
+          "url": "data-convert-1.0.0.jar",
+          "size": 3499,
+          "sha512": "161a78b1770aff35adebf1a63c454ff866e702ead5500f593354d39b4298115d6b5452754abdc7ed8bb5242d7a6792209e9205050fb3df019019371b866e7132",
+          "sha256": "362462ace2d59647598f7fe0235f699671a3f7fb74074b46a1dcbbe7fa46a504",
+          "sha1": "9836351c3c8de1d01aafdddb4362c3e4f6e7f262",
+          "md5": "44f9d2ee86879bfc9dda12ac1a9b3e03"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.apache.commons",
+          "module": "commons-lang3",
+          "version": {
+            "requires": "3.17.0"
+          }
+        },
+        {
+          "group": "com.fasterxml.jackson.core",
+          "module": "jackson-databind",
+          "version": {
+            "requires": "2.18.2"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "data-convert-1.0.0.jar",
+          "url": "data-convert-1.0.0.jar",
+          "size": 3499,
+          "sha512": "161a78b1770aff35adebf1a63c454ff866e702ead5500f593354d39b4298115d6b5452754abdc7ed8bb5242d7a6792209e9205050fb3df019019371b866e7132",
+          "sha256": "362462ace2d59647598f7fe0235f699671a3f7fb74074b46a1dcbbe7fa46a504",
+          "sha1": "9836351c3c8de1d01aafdddb4362c3e4f6e7f262",
+          "md5": "44f9d2ee86879bfc9dda12ac1a9b3e03"
+        }
+      ]
+    }
+  ]
+}

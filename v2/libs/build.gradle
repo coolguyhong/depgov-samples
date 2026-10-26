@@ -1,0 +1,33 @@
+subprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'maven-publish'
+
+    group = name in ['plugin-api', 'report-plugin'] ? 'com.depgov.plugins' : 'com.depgov.common'
+    version = '1.0.0'
+
+    repositories {
+        mavenCentral()
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+        options.release = project.name == 'common-util' ? 8 : project.name == 'data-convert' ? 17 : 21
+    }
+
+    tasks.withType(Test).configureEach {
+        useJUnitPlatform()
+    }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+            }
+        }
+        repositories {
+            maven {
+                url = uri("${rootDir}/../maven-repo")
+            }
+        }
+    }
+}
