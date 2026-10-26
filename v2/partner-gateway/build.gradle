@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.depgov.sample.v2'
+version = '1.0.0'
+
+application {
+    mainClass = 'com.depgov.sample.gateway.GatewayApp'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 21
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://raw.githubusercontent.com/coolguyhong/depgov-samples/main/v2/maven-repo' }
+}
+
+dependencies {
+    // SMP-C19: PartnerClient 생성·get 호출, PartnerException catch.
+    implementation 'com.depgov.common:ext-client:1.0.0'
+    implementation 'com.depgov.common:data-convert:1.0.0'
+    implementation 'org.slf4j:slf4j-api:2.0.18'
+    // SMP-C20: runtime binding 전용, Java 소스 참조 없음.
+    runtimeOnly 'ch.qos.logback:logback-classic:1.5.34'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.4'
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,5 @@
+[
+  {"requestId":"REQ-001","path":"/partners/P100"},
+  {"requestId":"REQ-002","path":"/partners/missing"},
+  {"requestId":"REQ-003","path":"/partners/P200"}
+]

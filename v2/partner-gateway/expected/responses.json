@@ -1,0 +1,1 @@
+[{"requestId":"REQ-001","status":"SUCCESS","partner":{"code":"P100","displayName":"한빛상사","enabled":true},"error":null},{"requestId":"REQ-002","status":"FAILED","partner":null,"error":"Partner GET failed: HTTP 404"},{"requestId":"REQ-003","status":"SUCCESS","partner":{"code":"P200","displayName":"새봄물류","enabled":false},"error":null}]
