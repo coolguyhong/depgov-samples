@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.depgov.sample.v2'
+version = '1.0.0'
+
+application {
+    mainClass = 'com.depgov.sample.settlement.SettlementBatch'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://raw.githubusercontent.com/coolguyhong/depgov-samples/main/v2/maven-repo'
+    }
+}
+
+dependencies {
+    implementation 'com.depgov.common:data-convert:1.0.0'
+    implementation 'com.depgov.common:common-util:1.0.0'
+    implementation 'org.apache.commons:commons-lang3:3.16.0' // SMP-C13: selected 3.17.0
+    implementation 'org.postgresql:postgresql:42.7.11' // SMP-C14: declaration only
+    implementation 'org.antlr:antlr4-runtime:4.13.2' // SMP-C15: declaration only (Claude 보완 2026-10-26: HikariCP 7.0.2 는 slf4j-api 2.0.17 을 끌어와 오프라인 저장소에서 해석 불가 → 전이 없는 antlr4-runtime 으로 교체)
+    implementation 'commons-io:commons-io:2.18.0' // SMP-C16: static calls
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.4'
+}
+
+test {
+    useJUnitPlatform()
+}
