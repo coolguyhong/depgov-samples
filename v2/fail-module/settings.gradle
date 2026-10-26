@@ -1,0 +1,2 @@
+rootProject.name = 'fail-module'
+include 'ok', 'broken'
