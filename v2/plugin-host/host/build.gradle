@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+application {
+    mainClass = 'com.depgov.sample.plugin.HostApp'
+}
+
+dependencies {
+    runtimeOnly 'com.depgov.plugins:report-plugin:1.0.0' // SMP-C21: SPI only
+    implementation 'commons-codec:commons-codec:1.17.1' // SMP-C22: reflection only
+    implementation 'org.yaml:snakeyaml:2.6' // SMP-C23: direct constructor/method calls
+    implementation 'com.depgov.plugins:plugin-api:1.0.0' // SMP-C24: Plugin type/calls
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.4'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('run') {
+    workingDir rootProject.projectDir
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+    workingDir rootProject.projectDir
+}
