@@ -6,21 +6,27 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StringKitTest {
     @Test
+    void padsOnTheLeft() {
+        assertEquals("  abc", StringKit.padLeft("abc", 5));
+        assertEquals("   ", StringKit.padLeft(null, 3));
+    }
+
+    @org.junit.jupiter.api.Test
     void padsOnTheRight() {
-        assertEquals("abc  ", StringKit.pad("abc", 5));
+        assertEquals("abc  ", StringKit.padRight("abc", 5));
     }
 
     @Test
     void treatsNullAsEmpty() {
-        assertEquals("   ", StringKit.pad(null, 3));
-        assertEquals("", StringKit.pad(null, 0));
-        assertEquals("  ", StringKit.pad("", 2));
+        assertEquals("   ", StringKit.padRight(null, 3));
+        assertEquals("", StringKit.padRight(null, 0));
+        assertEquals("  ", StringKit.padRight("", 2));
     }
 
     @Test
     void doesNotTruncateOrPadToNegativeWidths() {
-        assertEquals("abc", StringKit.pad("abc", 2));
-        assertEquals("abc", StringKit.pad("abc", -1));
+        assertEquals("abc", StringKit.padRight("abc", 2));
+        assertEquals("abc", StringKit.padRight("abc", -1));
     }
 
     @Test

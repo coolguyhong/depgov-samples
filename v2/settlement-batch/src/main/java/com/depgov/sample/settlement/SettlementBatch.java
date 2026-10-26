@@ -2,7 +2,7 @@
 // SMP-C13: StringUtils static calls; declared 3.16.0, selected 3.17.0.
 // SMP-C14, SMP-C15: declaration only; no source references or runtime loading.
 // SMP-C16: FileUtils.readLines / writeStringToFile static calls.
-// Common APIs: CsvLine.split, JsonCodec.write, Money.roundHalfUp, StringKit.pad static calls.
+// Common APIs: CsvLine.split, JsonCodec.write, Money.roundHalfUp, StringKit.padRight static calls (v2.2: common-util 1.1.0).
 package com.depgov.sample.settlement;
 
 import com.depgov.common.convert.CsvLine;
@@ -84,7 +84,7 @@ public final class SettlementBatch {
     }
 
     public static String summary(SettlementResult result) {
-        return StringKit.pad("SETTLEMENT", 12)
+        return StringKit.padRight("SETTLEMENT", 12)
                 + "merchants=" + result.merchants().size()
                 + " approved=" + result.approvedTransactions()
                 + " gross=" + result.grossAmount()

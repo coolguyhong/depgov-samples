@@ -7,8 +7,13 @@ public final class StringKit {
     private StringKit() {
     }
 
-    public static String pad(String s, int width) {
+    // 1.1.0: pad(String,int) 제거(SMP-C32 변경 영향 사례). padRight 가 같은 의미, padLeft 추가.
+    public static String padRight(String s, int width) {
         return StringUtils.rightPad(StringUtils.defaultString(s), width);
+    }
+
+    public static String padLeft(String s, int width) {
+        return StringUtils.leftPad(StringUtils.defaultString(s), width);
     }
 
     public static boolean isBlank(String s) {

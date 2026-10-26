@@ -1,4 +1,4 @@
-// SMP-C25: StringKit.pad / Money.roundHalfUp static calls (Java 8 common-util).
+// SMP-C25: StringKit.padRight(1.1.0; 1.0.0 에서는 pad) / Money.roundHalfUp static calls (Java 8 common-util).
 // SMP-C26: LoggerFactory.getLogger static call; SLF4J 1.7.36 stays selected.
 // SMP-C27: LogManager.getLogger static call; one separate audit event per report.
 // SMP-C28: declaration only in build.gradle; no source or bytecode reference.
@@ -57,7 +57,7 @@ public final class LegacyReport {
         }
 
         StringBuilder report = new StringBuilder("MONTHLY SALES REPORT (KRW)\n");
-        report.append(StringKit.pad("MONTH", 7)).append(' ')
+        report.append(StringKit.padRight("MONTH", 7)).append(' ')
                 .append(StringUtils.rightPad("RECORDS", 7)).append(' ')
                 .append(StringUtils.leftPad("SALES", 12)).append(' ')
                 .append(StringUtils.leftPad("TAX", 12)).append(' ')
@@ -83,7 +83,7 @@ public final class LegacyReport {
     }
 
     private static void appendRow(StringBuilder report, String month, long count, long amount, long tax) {
-        report.append(StringKit.pad(month, 7)).append(' ')
+        report.append(StringKit.padRight(month, 7)).append(' ')
                 .append(StringUtils.leftPad(Long.toString(count), 7)).append(' ')
                 .append(StringUtils.leftPad(Long.toString(amount), 12)).append(' ')
                 .append(StringUtils.leftPad(Long.toString(tax), 12)).append(' ')

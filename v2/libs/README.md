@@ -39,3 +39,11 @@ publish 대상은 `uri("${rootDir}/../maven-repo")`, 즉 이 저장소의 `v2/ma
 - `data-convert` 1.0.0: `com.depgov.common.convert.JsonCodec { static <T> T read(String, Class<T>); static String write(Object) }`, `com.depgov.common.convert.CsvLine { static List<String> split(String); static String join(List<String>) }`. 의존: jackson-databind 2.18.2(`api`), commons-lang3 3.17.0(`implementation`). 1.1.0: jackson-databind 2.21.4로만 교체.
 - `ext-client` 1.0.0: `com.depgov.common.ext.PartnerClient { PartnerClient(String baseUrl); String get(String path); }` (httpclient5 5.6.1 사용, httpcore5 5.4 명시 `implementation`). 1.1.0: httpcore5 명시 선언 제거(전이 버전만) 또는 버전 변경 — Claude가 S1 결과를 보고 확정해 변경 이력에 적는다.
 - `report-plugin` 1.0.0: `com.depgov.plugins.report.ReportPlugin implements com.depgov.plugins.spi.Plugin`(SPI 인터페이스는 `com.depgov.plugins:plugin-api` 1.0.0 별도 artifact, host가 직접 참조). `META-INF/services/com.depgov.plugins.spi.Plugin` 포함.
+
+
+## 1.1.0 (v2.2, 2026-10-26)
+
+- common-util 1.1.0: `StringKit.pad` 제거, `padRight`/`padLeft` 추가, `Money` 유지.
+- data-convert 1.1.0: jackson-databind 2.18.2 → 2.21.4.
+- ext-client 1.1.0: httpcore5 명시 선언 제거(httpclient5 전이 5.4만).
+- plugin-api / report-plugin 은 1.0.0 유지. `v2/maven-repo` 에 1.0.0 과 1.1.0 이 함께 있다.

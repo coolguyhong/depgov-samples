@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.depgov.common:common-util:1.0.0' // SMP-C25: static calls
+    implementation 'com.depgov.common:common-util:1.1.0' // v2.2 // SMP-C25: static calls
     implementation 'org.slf4j:slf4j-api:1.7.36' // SMP-C26: BOM version mismatch
     implementation 'org.apache.logging.log4j:log4j-api:2.25.4' // SMP-C27: outside BOM
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2' // SMP-C28: declaration only

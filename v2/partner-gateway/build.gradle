@@ -27,8 +27,8 @@ repositories {
 
 dependencies {
     // SMP-C19: PartnerClient 생성·get 호출, PartnerException catch.
-    implementation 'com.depgov.common:ext-client:1.0.0'
-    implementation 'com.depgov.common:data-convert:1.0.0'
+    implementation 'com.depgov.common:ext-client:1.1.0' // v2.2
+    implementation 'com.depgov.common:data-convert:1.1.0' // v2.2
     implementation 'org.slf4j:slf4j-api:2.0.18'
     // SMP-C20: runtime binding 전용, Java 소스 참조 없음.
     runtimeOnly 'ch.qos.logback:logback-classic:1.5.34'

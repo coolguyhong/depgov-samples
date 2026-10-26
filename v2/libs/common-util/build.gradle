@@ -1,3 +1,5 @@
+version = '1.1.0' // v2.2
+
 dependencies {
     api 'org.apache.commons:commons-lang3:3.17.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'

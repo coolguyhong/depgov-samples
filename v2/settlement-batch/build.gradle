@@ -18,8 +18,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.depgov.common:data-convert:1.0.0'
-    implementation 'com.depgov.common:common-util:1.0.0'
+    implementation 'com.depgov.common:data-convert:1.1.0' // v2.2
+    implementation 'com.depgov.common:common-util:1.1.0' // v2.2
     implementation 'org.apache.commons:commons-lang3:3.16.0' // SMP-C13: selected 3.17.0
     implementation 'org.postgresql:postgresql:42.7.11' // SMP-C14: declaration only
     implementation 'org.antlr:antlr4-runtime:4.13.2' // SMP-C15: declaration only (Claude 보완 2026-10-26: HikariCP 7.0.2 는 slf4j-api 2.0.17 을 끌어와 오프라인 저장소에서 해석 불가 → 전이 없는 antlr4-runtime 으로 교체)
