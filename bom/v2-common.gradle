@@ -1,0 +1,11 @@
+// SMP-01 (2026-10-26): 사내 공통 라이브러리 기준 버전. depgov가 bom/*.gradle 전체를 읽는다.
+// v2.3 에서 common-util 을 1.1.0 으로 올린다(기준 버전 불일치 사례).
+dependencies {
+    constraints {
+        api 'com.depgov.common:common-util:1.0.0'
+        api 'com.depgov.common:data-convert:1.0.0'
+        api 'com.depgov.common:ext-client:1.0.0'
+        api 'com.depgov.plugins:plugin-api:1.0.0'
+        api 'com.depgov.plugins:report-plugin:1.0.0'
+    }
+}

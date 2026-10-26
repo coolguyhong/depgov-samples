@@ -1,0 +1,10 @@
+// SMP-01 (2026-10-26): v2 표본이 새로 쓰는 공개 라이브러리의 기준 버전.
+// 기존 opensource/platform/product.gradle 의 좌표·버전은 바꾸지 않는다(기존 svc-01~03 정답표 보존). 기존 정답표가
+// BOM 밖(outOfBom)으로 둔 좌표(commons-io, logback, log4j, spring-*, micrometer, checker-qual, guava 부속 등)는 넣지 않는다.
+dependencies {
+    constraints {
+        api 'org.apache.commons:commons-compress:1.27.1'
+        api 'org.apache.httpcomponents.client5:httpclient5:5.6.1'
+        api 'org.apache.httpcomponents.core5:httpcore5-h2:5.4'
+    }
+}
