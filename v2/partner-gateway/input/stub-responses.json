@@ -1,0 +1,5 @@
+[
+  {"path":"/partners/P100","status":200,"body":{"id":"P100","companyName":"한빛상사","state":"ACTIVE"}},
+  {"path":"/partners/missing","status":404,"body":{"message":"Partner not found"}},
+  {"path":"/partners/P200","status":200,"body":{"id":"P200","companyName":"새봄물류","state":"INACTIVE"}}
+]
