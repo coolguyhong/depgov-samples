@@ -27,13 +27,13 @@
 | C25 | legacy common-util **1.1.0**(padRight 호출), versionMismatch true(BOM 1.0.0) | 일치 |
 | C31 | common-util 역조회: 1.0.0 → order 만, 1.1.0 → settle·legacy | 일치(`/api/libraries/{coordinate}` 1.0.0: order/app, 1.1.0: settlement-batch·legacy-report) |
 | C32 | `StringKit#pad` 변경 영향: order(app) 만(1.0.0 사용자). settle·legacy 는 padRight 로 이행 | 일치(`/api/change-impact`: order-service OrderApp.java:38 만) |
-| C33 | jackson-databind 2.18.2 포함: order 는 2.21.4 로 이미 교체(v2.1), settle·gateway 는 data-convert 1.1.0 으로 2.21.4 → **legacy(선언만)·svc-01 만 남음** |
+| C33 | jackson-databind 2.18.2 포함: order 는 2.21.4 로 이미 교체(v2.1), settle·gateway 는 data-convert 1.1.0 으로 2.21.4 → **legacy(선언만)·svc-01 만 남음** | 일치(`/api/dependencies/{2.18.2}/impact`: svc-01, legacy-report, fail-jdk(REDUCED); `{2.21.4}`: order/app depth1, settle depth2 via data-convert 1.1.0, gateway TRANSITIVE_ONLY depth2) |
 | 그 외 settle/gateway/legacy 의 data-convert·ext-client·common-util 행 | 선택 1.1.0, BOM 1.0.0 → versionMismatch true |
 
 ## v2.3 (BOM-v2 상향: 공통 라이브러리 기준 1.1.0, antlr4-runtime BOM 추가)
 
-| 사례 | v2.3 기대 |
-| --- | --- |
-| C07/C08/C09 | order 의 common-util·data-convert·ext-client 1.0.0 → versionMismatch **true**(BOM 1.1.0) |
-| C15 | antlr4-runtime outOfBom **false**(BOM 관리로 전환) |
-| settle/gateway/legacy 1.1.0 행 | versionMismatch false 로 복귀 |
+| 사례 | v2.3 기대 | 관측(L lane run 7) |
+| --- | --- | --- |
+| C07/C08/C09 | order 의 common-util·data-convert·ext-client 1.0.0 → versionMismatch **true**(BOM 1.1.0) | 일치 |
+| C15 | antlr4-runtime outOfBom **false**(BOM 관리로 전환) | 일치 |
+| settle/gateway/legacy 1.1.0 행 | versionMismatch false 로 복귀 | 일치(C12/C19/C25 의 남은 차이는 v2.0 기준 버전값뿐) |
