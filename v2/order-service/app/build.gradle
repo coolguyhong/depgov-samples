@@ -10,9 +10,8 @@ application {
 dependencies {
     implementation project(':domain')
     implementation 'org.apache.commons:commons-lang3:3.17.0'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
-    // SMP-C04: intentionally unused, declaration only.
-    implementation 'org.apache.commons:commons-compress:1.27.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.21.4' // v2.1: 2.18.2(취약) → 2.21.4 교체 (SMP-C02)
+    // v2.1: SMP-C04 미사용 commons-compress 1.27.1 제거
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation 'commons-io:commons-io:2.18.0'
     implementation 'com.depgov.common:common-util:1.0.0'
