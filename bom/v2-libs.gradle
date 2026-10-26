@@ -6,5 +6,6 @@ dependencies {
         api 'org.apache.commons:commons-compress:1.27.1'
         api 'org.apache.httpcomponents.client5:httpclient5:5.6.1'
         api 'org.apache.httpcomponents.core5:httpcore5-h2:5.4'
+        api 'org.antlr:antlr4-runtime:4.13.2' // v2.3: BOM 관리 밖 → 관리로 전환(settlement-batch SMP-C15)
     }
 }
