@@ -1,0 +1,7 @@
+{
+  "recipient": "ops-team",
+  "message": "Release ready",
+  "scheduledAt": "2030-11-01T09:00:00+09:00",
+  "deliveryUrl": "https://notify.example.invalid/notifications",
+  "status": "QUEUED"
+}
