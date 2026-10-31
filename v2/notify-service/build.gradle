@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.5.16'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.depgov.sample.v2'
+version = '1.0.0'
+
+// Boot 관리 좌표는 선언에서 버전 생략. S11 고정 버전과 HttpClient/Core 호환 버전 적용.
+ext['httpclient5.version'] = '5.6.1'
+ext['httpcore5.version'] = '5.4'
+// 압축/HTTP 전이 codec: Boot 기본 1.18.0 jar는 공급본에 없어 계약 5.1 풀의 버전을 사용한다.
+ext['commons-codec.version'] = '1.17.1'
+// API만 S11 버전으로 관리한다. Boot 로깅 브리지 버전은 Boot BOM을 따른다.
+dependencyManagement {
+    dependencies {
+        dependency 'org.apache.logging.log4j:log4j-api:2.25.4'
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://raw.githubusercontent.com/coolguyhong/depgov-samples/main/v2/maven-repo'
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-json' // web 경유와 중복, ObjectMapper 하위 사용
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310' // JavaTimeModule 명시 등록
+    implementation 'org.apache.httpcomponents.client5:httpclient5'
+    implementation 'org.apache.commons:commons-lang3'
+    implementation 'com.depgov.common:ext-client:1.1.0'
+    implementation 'org.apache.commons:commons-compress:1.27.1' // 한 번도 안 씀: 압축 기능 미구현
+    implementation 'org.apache.logging.log4j:log4j-api' // 기능 삭제 후 잔류: 전송 감사 로그의 Log4j API 호출 제거
+    implementation 'org.apache.commons:commons-text:1.12.0' // 한 번도 안 씀: 템플릿 치환 기능 미구현
+    runtimeOnly 'com.h2database:h2'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('test', Test) {
+    useJUnitPlatform()
+    systemProperty 'sample.root', projectDir.absolutePath
+}
