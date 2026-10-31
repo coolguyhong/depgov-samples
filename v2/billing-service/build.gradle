@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.5.16'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.depgov.sample.v2'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://raw.githubusercontent.com/coolguyhong/depgov-samples/main/v2/maven-repo'
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+// Boot manages commons-codec at 1.18.0; S09 fixes 1.17.1 through its BOM property.
+ext['commons-codec.version'] = '1.17.1'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    runtimeOnly 'com.h2database:h2'
+    implementation 'org.apache.commons:commons-lang3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'com.depgov.common:data-convert:1.1.0'
+    // Never used: reserved for a checksum feature that was never implemented.
+    implementation 'commons-codec:commons-codec'
+    // Removed feature residue: a billing-rule expression parser was deleted.
+    implementation 'org.antlr:antlr4-runtime:4.13.2'
+    // Runtime binding; deliberately repeats starter-web's logging dependency.
+    runtimeOnly 'ch.qos.logback:logback-classic'
+    implementation 'org.slf4j:slf4j-api'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
+}
+
+tasks.named('test', Test) {
+    useJUnitPlatform()
+    systemProperty 'sample.root', projectDir.absolutePath
+}

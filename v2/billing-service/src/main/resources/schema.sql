@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS invoices (
+    invoice_id VARCHAR(64) PRIMARY KEY,
+    document VARCHAR(8192) NOT NULL
+);
