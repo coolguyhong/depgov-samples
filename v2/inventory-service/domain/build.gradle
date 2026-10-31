@@ -1,0 +1,5 @@
+// domain은 Boot dependency-management를 적용하지 않는 순수 Java 모듈이다.
+dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.17.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.18.2'
+}
