@@ -1,0 +1,4 @@
+dependencies {
+    implementation 'org.apache.commons:commons-lang3'
+    compileOnly 'jakarta.persistence:jakarta.persistence-api' // Entity annotation 컴파일 전용(DECLARED_ONLY). 런타임 공급은 app/infra의 starter가 맡는다 (Claude 보완)
+}
