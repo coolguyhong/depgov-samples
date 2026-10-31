@@ -75,3 +75,17 @@ Codex 검토 지적: `v2/inventory-service/app/build.gradle` 은 Claude 보완(s
 | C48 starter-test | 20 → 17 | `testImplementation 'org.springframework.boot:spring-boot-starter-test'` |
 
 tag v2.4 는 이동하지 않는다(후속 commit). 과거 측정 원본(L lane run 1 compare)은 보존한다.
+
+### 정정(2026-10-31, 전수 재점검 — 소스 근거 위치·주석만, 판정·등급·플래그 불변)
+
+101행 전부에 대해 evidence_file 존재·evidence_lines 범위·인용 줄의 좌표/클래스 언급을 현재 소스로 대조했다(starter 행은 하위 클래스 사용 줄을 인용하는 것이 정상). 고친 것:
+
+| 사례 | 변경 | 현재 소스 |
+| --- | --- | --- |
+| C14 postgresql(settle) | `dependencies` → 24 | `implementation 'org.postgresql:postgresql:42.7.11'` |
+| C15 antlr4-runtime | `dependencies` → 25 | `implementation 'org.antlr:antlr4-runtime:4.13.2'` |
+| C20 logback-classic(gateway) | `runtimeOnly` → 34 | `runtimeOnly 'ch.qos.logback:logback-classic:1.5.34'` |
+| C28 jackson-databind(legacy) | `dependencies` → 25 | `implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'` |
+| C18 httpcore5(gateway, 전이) | 3 → 4 | ext-client 1.1.0 `build.gradle` 4행 httpclient5(전이로 httpcore5 5.4 포함) |
+| C04 commons-compress(order) | 주석 | evidence 는 tag v2.0 기준(v2.1 에서 제거, 현재 main 에는 행 없음) |
+| C63 starter-data-jpa(catalog app) | 주석 | 하위 참조는 SpringApplication(spring-boot) 경유임을 명시 |
