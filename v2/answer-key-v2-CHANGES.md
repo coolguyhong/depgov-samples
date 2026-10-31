@@ -37,3 +37,20 @@
 | C07/C08/C09 | order 의 common-util·data-convert·ext-client 1.0.0 → versionMismatch **true**(BOM 1.1.0) | 일치 |
 | C15 | antlr4-runtime outOfBom **false**(BOM 관리로 전환) | 일치 |
 | settle/gateway/legacy 1.1.0 행 | versionMismatch false 로 복귀 | 일치(C12/C19/C25 의 남은 차이는 v2.0 기준 버전값뿐) |
+
+## poc-3 규칙(2026-10-31, RPT-01 A — 분석 전에 기록)
+
+분석기 규칙 `poc-2 → poc-3`(invokedynamic bootstrap Handle·클래스 리터럴 참조 수집, `META-INF/services/X` 제공 jar 의 `USED_VIA_SPI` 판정). 결과 맞춤이 아니라 규칙 변경에 따른 사전 기대값이며, 아래 두 행만 바뀐다.
+
+| 사례 | poc-2 기대 | poc-3 기대 | 근거 |
+| --- | --- | --- | --- |
+| C06 commons-io(order/app) | UNUSED_CANDIDATE HIGH, LIM-INVOKEDYNAMIC | **REFERENCED** | `AttachmentNames.java:12` `FilenameUtils::getExtension` 은 invokedynamic bootstrap Handle(H_INVOKESTATIC) → METHOD 참조 |
+| C21 report-plugin(plugin/host, hold-out) | UNUSED_CANDIDATE MEDIUM, LIM-SPI | **USED_VIA_SPI** | `HostApp.java:29;31` 이 `com.depgov.plugins.spi.Plugin` 참조, report-plugin jar 가 `META-INF/services/com.depgov.plugins.spi.Plugin` 제공 |
+
+C22(reflection, `Class.forName`)는 그대로 오탐(LIM-REFLECTION)이다. C05(annotation 전용)는 바뀌지 않는다(annotation 은 바이트코드 참조로 수집하지 않음).
+
+## v2.4 (RPT-01 C — 업무형 표본 5개 추가, 2026-10-31)
+
+`v2/inventory-service`(S08, C35~C48), `v2/billing-service`(S09, C49~C60), `v2/catalog-service`(S10, C62~C75), `v2/notify-service`(S11, C76~C89), `v2/audit-service`(S12, C90~C102). Spring Boot 3.5.16, H2, Codex `gpt-6.1-sol/high` 제작, Claude 독립 빌드·정답표 대조. hold-out 2건 추가: C68(protobuf-java), C98(postgresql). BOM-v2 에 commons-collections4 4.4·protobuf-java 4.34.2 추가(기존 좌표 불변). C61 은 결번.
+
+정답표 작성 규칙(Claude 확정): DECLARED_ONLY 행은 분석기 계약대로 `expected_out_of_bom=false`(선언만 보존, BOM 대조 없음). `com.h2database:h2` runtimeOnly 는 실제 DB 로 쓰이지만 드라이버 클래스 참조가 없어 런타임 로딩 목록의 `UNUSED_CANDIDATE LOW` 로 기대(서비스마다 1행, LOW 는 정밀도 계산 제외). S08 starter-cache(C42)는 Codex 가 `transitive = false` 로 후보화했으나 Claude 보완으로 자연스러운 선언으로 되돌렸고, 전이 Boot 공통 jar 가 다른 경로로 참조되므로 `USED_VIA_CHILD` 로 제외된다 — 잔류 starter 미탐을 `LIM-STARTER-SHARED-SUBTREE` 로 기록한다. S10 domain 의 jakarta.persistence-api 는 Codex 의 artifactView 구성을 `compileOnly` 선언으로 바꿔 C75(DECLARED_ONLY)로 추가했다.
