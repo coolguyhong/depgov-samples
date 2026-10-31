@@ -1,0 +1,32 @@
+package com.depgov.sample.audit.app;
+
+import com.depgov.sample.audit.domain.AuditEntry;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/audit-events")
+public class AuditController {
+    private final AuditService service;
+
+    public AuditController(AuditService service) {
+        this.service = service;
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public AuditEntry create(@RequestBody AuditRequest request) {
+        return service.create(request);
+    }
+
+    @GetMapping("/{eventId}")
+    public AuditEntry find(@PathVariable("eventId") String eventId) {
+        return service.find(eventId);
+    }
+}
