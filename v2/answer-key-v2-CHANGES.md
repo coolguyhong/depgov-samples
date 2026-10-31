@@ -54,3 +54,12 @@ C22(reflection, `Class.forName`)는 그대로 오탐(LIM-REFLECTION)이다. C05(
 `v2/inventory-service`(S08, C35~C48), `v2/billing-service`(S09, C49~C60), `v2/catalog-service`(S10, C62~C75), `v2/notify-service`(S11, C76~C89), `v2/audit-service`(S12, C90~C102). Spring Boot 3.5.16, H2, Codex `gpt-6.1-sol/high` 제작, Claude 독립 빌드·정답표 대조. hold-out 2건 추가: C68(protobuf-java), C98(postgresql). BOM-v2 에 commons-collections4 4.4·protobuf-java 4.34.2 추가(기존 좌표 불변). C61 은 결번.
 
 정답표 작성 규칙(Claude 확정): DECLARED_ONLY 행은 분석기 계약대로 `expected_out_of_bom=false`(선언만 보존, BOM 대조 없음). `com.h2database:h2` runtimeOnly 는 실제 DB 로 쓰이지만 드라이버 클래스 참조가 없어 런타임 로딩 목록의 `UNUSED_CANDIDATE LOW` 로 기대(서비스마다 1행, LOW 는 정밀도 계산 제외). S08 starter-cache(C42)는 Codex 가 `transitive = false` 로 후보화했으나 Claude 보완으로 자연스러운 선언으로 되돌렸고, 전이 Boot 공통 jar 가 다른 경로로 참조되므로 `USED_VIA_CHILD` 로 제외된다 — 잔류 starter 미탐을 `LIM-STARTER-SHARED-SUBTREE` 로 기록한다. S10 domain 의 jakarta.persistence-api 는 Codex 의 artifactView 구성을 `compileOnly` 선언으로 바꿔 C75(DECLARED_ONLY)로 추가했다.
+
+### 정정(2026-10-31, L lane run 1 뒤 — 소스·jar 근거로 정정, 결과 맞춤 아님)
+
+| 사례 | 변경 | 근거 |
+| --- | --- | --- |
+| C60·C74·C89·C102 (starter-test, DECLARED_ONLY) | expected_selected_version 3.5.16 → 빈 값 | DECLARED_ONLY 는 runtimeClasspath 밖이라 선택 버전이 없다(분석기 계약, C48 과 동일). 작성 오류 |
+| C83 log4j-api(notify) | expected_grade HIGH → MEDIUM | `log4j-api-2.25.4.jar` 안에 `META-INF/services/org.apache.logging.log4j.util.PropertySource` 가 있어 Table 51 "SPI 등록 정보" 조건 → MEDIUM. 작성 시 jar 내용을 확인하지 않은 오류. 코드가 PropertySource 를 참조하지 않으므로 poc-3 의 USED_VIA_SPI 에는 해당하지 않는다 |
+
+L lane run 1(main 831c89e, 분석기 poc-3) 대조: 101행 중 PASS 82 → 정정 뒤 87, FAIL 10 + NOT_FOUND 1 은 모두 v2.1~v2.3 tag 변경의 기대 차이(위 절), MANUAL 4(C31~C34 흐름 사례). 신규 C35~C102 67행은 정정 뒤 전부 PASS. C06 REFERENCED·C21 USED_VIA_SPI·C42 USED_VIA_CHILD 관측.
