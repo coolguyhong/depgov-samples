@@ -63,3 +63,15 @@ C22(reflection, `Class.forName`)는 그대로 오탐(LIM-REFLECTION)이다. C05(
 | C83 log4j-api(notify) | expected_grade HIGH → MEDIUM | `log4j-api-2.25.4.jar` 안에 `META-INF/services/org.apache.logging.log4j.util.PropertySource` 가 있어 Table 51 "SPI 등록 정보" 조건 → MEDIUM. 작성 시 jar 내용을 확인하지 않은 오류. 코드가 PropertySource 를 참조하지 않으므로 poc-3 의 USED_VIA_SPI 에는 해당하지 않는다 |
 
 L lane run 1(main 831c89e, 분석기 poc-3) 대조: 101행 중 PASS 82 → 정정 뒤 87, FAIL 10 + NOT_FOUND 1 은 모두 v2.1~v2.3 tag 변경의 기대 차이(위 절), MANUAL 4(C31~C34 흐름 사례). 신규 C35~C102 67행은 정정 뒤 전부 PASS. C06 REFERENCED·C21 USED_VIA_SPI·C42 USED_VIA_CHILD 관측.
+
+### 정정(2026-10-31, v2.4 이후 — 소스 근거 줄 번호만, 판정·등급·플래그 불변)
+
+Codex 검토 지적: `v2/inventory-service/app/build.gradle` 은 Claude 보완(starter-cache 의 `transitive = false` 4줄 블록 → 선언 1줄)으로 18행이 됐는데 C43·C48 의 evidence_lines 가 수정 전 줄(19·20)을 가리켰다. 같은 원인으로 C42 의 범위(15-18)도 어긋나 있었다. 현재 소스 기준으로 바로잡는다.
+
+| 사례 | evidence_lines | 현재 소스 |
+| --- | --- | --- |
+| C42 starter-cache | 15-18 → 15 | `implementation 'org.springframework.boot:spring-boot-starter-cache'` |
+| C43 postgresql | 19 → 16 | `runtimeOnly 'org.postgresql:postgresql'` |
+| C48 starter-test | 20 → 17 | `testImplementation 'org.springframework.boot:spring-boot-starter-test'` |
+
+tag v2.4 는 이동하지 않는다(후속 commit). 과거 측정 원본(L lane run 1 compare)은 보존한다.
