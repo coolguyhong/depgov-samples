@@ -1,0 +1,18 @@
+plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+}
+
+dependencies {
+    implementation project(':domain')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    runtimeOnly 'com.h2database:h2'
+    implementation 'org.apache.commons:commons-lang3'
+    implementation 'com.depgov.common:common-util:1.1.0'
+    implementation 'org.apache.commons:commons-text:1.12.0' // 한 번도 안 쓴 것: 도입만 하고 기능에 사용하지 않음.
+    implementation 'org.springframework.boot:spring-boot-starter-cache' // 기능 삭제 후 잔류: 재고 조회 캐시 제거(Claude 보완: 자연스러운 선언으로 되돌림)
+    runtimeOnly 'org.postgresql:postgresql' // 한 번도 안 쓴 것: PostgreSQL 도입 후보였으나 H2만 사용.
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
