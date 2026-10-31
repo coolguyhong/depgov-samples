@@ -1,0 +1,10 @@
+{
+  "invoiceId": "INV-001",
+  "customer": "Acme, Seoul",
+  "quantity": 3,
+  "unitPrice": 335,
+  "subtotal": 1005,
+  "tax": 101,
+  "total": 1106,
+  "csvLine": "INV-001,\"Acme, Seoul\",1005,101,1106"
+}
