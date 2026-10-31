@@ -12,6 +12,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind' // Boot BOM: 2.21.4
     implementation 'org.slf4j:slf4j-api' // Boot BOM: 2.0.18; LoggerFactory 직접 호출
     implementation 'commons-codec:commons-codec' // NEVER_USED: 처음부터 사용하지 않은 선언
+    implementation 'commons-io:commons-io:2.18.0' // NEVER_USED(v2.5 RPT-01): 파일 유틸 도입만 하고 한 번도 사용하지 않은 선언
     runtimeOnly 'org.postgresql:postgresql' // REMOVED_FEATURE: PostgreSQL 외부 감사 보관 기능 삭제 후 잔류; 현재 H2만 사용
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

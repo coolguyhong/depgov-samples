@@ -89,3 +89,16 @@ tag v2.4 는 이동하지 않는다(후속 commit). 과거 측정 원본(L lane 
 | C18 httpcore5(gateway, 전이) | 3 → 4 | ext-client 1.1.0 `build.gradle` 4행 httpclient5(전이로 httpcore5 5.4 포함) |
 | C04 commons-compress(order) | 주석 | evidence 는 tag v2.0 기준(v2.1 에서 제거, 현재 main 에는 행 없음) |
 | C63 starter-data-jpa(catalog app) | 주석 | 하위 참조는 SpringApplication(spring-boot) 경유임을 명시 |
+
+
+## v2.5 (2026-10-31, RPT-01 E 재측정 뒤 표본 확장)
+
+AVS-01 회차 26·27 결과 poc-3 정밀도가 11/13 = 84.6% 로 목표 85% 에 1건 못 미쳤다. 정답표 안 HIGH·MEDIUM 후보가 13건뿐이라 설계된 한계 사례 2건(C05 annotation 전용, C22 reflection)만으로 최대치가 84.6% 가 되는 표본 구성 문제(비율 미검토)였다. 결과에 맞춰 기존 행·판정·한계 사례를 바꾸지 않고, **한 번도 사용하지 않은 직접 선언 3건을 추가**해 표본 크기를 늘린다(예상 14/16 = 87.5%). 기존 행 C01~C102 는 변경 없음. BOM-v2 는 변경 없음(새 좌표는 BOM 밖이거나 이미 BOM 에 있는 좌표).
+
+| 행 | 서비스/모듈 | 좌표 | 선언 위치 | 기대 |
+| --- | --- | --- | --- | --- |
+| C103 | audit-service/app | commons-io:commons-io:2.18.0 | app/build.gradle | UNUSED_CANDIDATE HIGH, outOfBom |
+| C104 | billing-service | org.apache.commons:commons-collections4:4.4 | build.gradle | UNUSED_CANDIDATE HIGH, BOM 관리 |
+| C105 | legacy-report | org.apache.commons:commons-text:1.12.0 | build.gradle | UNUSED_CANDIDATE HIGH, BOM 관리 |
+
+측정: AVS-01 만 v2.5 로 재수행한다(AVS-02~04 는 v2.4 측정값 유지, 선언 3건은 해당 지표에 영향 없음).

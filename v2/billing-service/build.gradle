@@ -31,6 +31,7 @@ dependencies {
     implementation 'com.depgov.common:data-convert:1.1.0'
     // Never used: reserved for a checksum feature that was never implemented.
     implementation 'commons-codec:commons-codec'
+    implementation 'org.apache.commons:commons-collections4:4.4' // NEVER_USED(v2.5 RPT-01): 한 번도 사용하지 않은 선언
     // Removed feature residue: a billing-rule expression parser was deleted.
     implementation 'org.antlr:antlr4-runtime:4.13.2'
     // Runtime binding; deliberately repeats starter-web's logging dependency.
